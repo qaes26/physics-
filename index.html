@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميكانيكا الموائع (دليل الحل من الصفر) - الصف التاسع</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        .lesson-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .math-block {
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+            font-size: 1.1rem;
+        }
+        .step-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 leading-relaxed">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white py-14 px-4 shadow-2xl text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">الوحدة الرابعة: ميكانيكا الموائع</h1>
+            <p class="text-xl md:text-2xl mb-6 text-blue-100">الشرح المفصل + دليل الحل من الصفر + الأمثلة والأسئلة</p>
+            <div class="inline-block bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-bold text-xl shadow-lg transform hover:scale-105 transition">
+                من إعداد: قيس جازي
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <ul class="flex flex-wrap justify-center gap-3 md:gap-6 py-4 text-xs md:text-base font-bold text-gray-600">
+                <li><a href="#how-to-solve" class="hover:text-red-600 border-b-2 border-transparent hover:border-red-600 transition">💡 كيف أحل؟</a></li>
+                <li><a href="#lesson1" class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition">1. ضغط المائع</a></li>
+                <li><a href="#lesson2" class="hover:text-green-600 border-b-2 border-transparent hover:border-green-600 transition">2. الطفو</a></li>
+                <li><a href="#lesson3" class="hover:text-purple-600 border-b-2 border-transparent hover:border-purple-600 transition">3. الموائع المتحركة</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10 space-y-16">
+
+        <!-- ==================== HOW TO SOLVE FROM ZERO ==================== -->
+        <section id="how-to-solve" class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border-t-8 border-red-500 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-red-500 text-white px-6 py-2 rounded-bl-3xl font-bold text-lg">مهم جداً للمبتدئين 🔥</div>
+            
+            <h2 class="text-3xl md:text-4xl font-black text-red-700 mb-6 mt-4">كيف تحل أي سؤال فيزياء من الصفر؟</h2>
+            <p class="text-lg mb-8 text-gray-700">إذا كنت تشعر بالضياع عند رؤية مسألة فيزيائية، لا تقلق! الفيزياء ليست سحراً، هي فقط خطوات منظمة. اتبع هذه الخطوات الخمسة السحرية ولن يصعب عليك أي سؤال:</p>
+
+            <div class="grid md:grid-cols-5 gap-4 text-center mb-10">
+                <div class="bg-red-50 p-4 rounded-xl border border-red-100 shadow-sm">
+                    <div class="text-4xl mb-2">🕵️‍♂️</div>
+                    <h3 class="font-bold text-red-800 mb-1">1. استخرج</h3>
+                    <p class="text-sm text-gray-600">اقرأ السؤال كالمحقق. أي رقم تراه، اكتبه وأعطه رمزه. (مثلاً: العمق \(h = 5\)).</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 shadow-sm">
+                    <div class="text-4xl mb-2">🎯</div>
+                    <h3 class="font-bold text-orange-800 mb-1">2. حدّد</h3>
+                    <p class="text-sm text-gray-600">ما الذي يطلبه السؤال؟ ضع رمزه وبجانبه علامة استفهام. (مثلاً: الضغط \(P = ?\)).</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100 shadow-sm">
+                    <div class="text-4xl mb-2">⚠️</div>
+                    <h3 class="font-bold text-yellow-800 mb-1">3. حوّل</h3>
+                    <p class="text-sm text-gray-600">تأكد من الوحدات. يجب أن يكون الطول بالمتر (\(m\))، والكتلة بالكيلوغرام (\(kg\)).</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 shadow-sm">
+                    <div class="text-4xl mb-2">🔑</div>
+                    <h3 class="font-bold text-blue-800 mb-1">4. القانون</h3>
+                    <p class="text-sm text-gray-600">اختر القانون الذي يجمع بين المعطيات والمطلوب. واكتبه بوضوح.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100 shadow-sm">
+                    <div class="text-4xl mb-2">✅</div>
+                    <h3 class="font-bold text-green-800 mb-1">5. عوّض</h3>
+                    <p class="text-sm text-gray-600">شِل الحروف من القانون وضع مكانها الأرقام، احسب، ولا تنسَ وحدة القياس النهائية!</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 text-white p-6 rounded-2xl shadow-inner">
+                <h3 class="text-xl font-bold text-yellow-400 mb-4 text-center">🧰 صندوق الرموز السري (احفظها مثل اسمك)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-center">
+                    <div class="bg-gray-700 p-2 rounded"><strong>الضغط:</strong> \(P\) - باسكال (\(Pa\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>القوة:</strong> \(F\) - نيوتن (\(N\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>المساحة:</strong> \(A\) - متر مربع (\(m^2\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>الكثافة:</strong> \(\rho\) (رو) - \(kg/m^3\)</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>العمق/الارتفاع:</strong> \(h\) - متر (\(m\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>الحجم:</strong> \(V\) - متر مكعب (\(m^3\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>السرعة:</strong> \(v\) - متر/ثانية (\(m/s\))</div>
+                    <div class="bg-gray-700 p-2 rounded"><strong>الجاذبية:</strong> \(g\) - ثابت (\(10 \, m/s^2\))</div>
+                </div>
+                <p class="mt-4 text-center text-red-300 font-bold text-sm">💡 تحويلات هامة: للتحويل من \(cm\) إلى \(m\) نقسم على 100. للتحويل من \(cm^2\) إلى \(m^2\) نقسم على 10,000.</p>
+            </div>
+        </section>
+
+        <!-- ==================== Lesson 1 ==================== -->
+        <section id="lesson1" class="lesson-card bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-gray-100">
+            <div class="flex items-center gap-4 mb-8 border-b-2 border-blue-100 pb-4">
+                <div class="bg-blue-600 text-white w-14 h-14 rounded-2xl flex items-center justify-center text-3xl font-black shadow-md">1</div>
+                <h2 class="text-3xl md:text-4xl font-black text-blue-900">الدرس الأول: ضغط المائع</h2>
+            </div>
+
+            <div class="space-y-10">
+                <!-- شرح مبسط -->
+                <div>
+                    <h3 class="text-2xl font-bold text-blue-700 mb-4">📖 القوانين الأساسية</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-4">
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">1. ضغط السائل (للأشياء الغارقة):</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm">\[ P = \rho \cdot g \cdot h \]</div>
+                            <p class="text-sm mt-2 text-gray-600">نستخدمه إذا أعطانا في السؤال كثافة وعمق.</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">2. الرافعة الهيدروليكية (مبدأ باسكال):</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm">\[ \frac{F_1}{A_1} = \frac{F_2}{A_2} \]</div>
+                            <p class="text-sm mt-2 text-gray-600">نستخدمه إذا كان السؤال يتحدث عن مكبس أو سيارة وقوة ومساحات.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مثال محلول خطوة بخطوة للمبتدئين -->
+                <div class="bg-blue-50 p-6 rounded-2xl border-r-[5px] border-blue-500 shadow-sm">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                        <span class="text-2xl">📝</span> تطبيق طريقة الحل من الصفر
+                    </h3>
+                    
+                    <div class="bg-white p-5 rounded-xl shadow-md border border-blue-100">
+                        <p class="mb-4 text-lg font-bold">السؤال: غواص يسبح في بحيرة مياه عذبة على عمق \( 8 \, m \). احسب ضغط الماء المؤثر عليه. (علماً بأن كثافة الماء \( 1000 \, kg/m^3 \) وتسارع السقوط الحر \( 10 \, m/s^2 \)).</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-red-100 text-red-800 step-badge">1. المعطيات</span>
+                                <div class="text-gray-700">العمق \( h = 8 \). الكثافة \( \rho = 1000 \). الجاذبية \( g = 10 \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-orange-100 text-orange-800 step-badge">2. المطلوب</span>
+                                <div class="text-gray-700">يقول "احسب ضغط الماء"، إذن المطلوب هو الضغط \( P = ? \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-yellow-100 text-yellow-800 step-badge">3. التحويل</span>
+                                <div class="text-gray-700">العمق بالمتر (\(m\)) والكثافة بالـ \(kg/m^3\). كل شيء جاهز، لا يوجد تحويل! 🎉</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-blue-100 text-blue-800 step-badge">4. القانون</span>
+                                <div class="text-gray-700">لدينا \(h\) و \(\rho\) ونريد \(P\). القانون هو: <span class="math-block inline-block bg-gray-100 px-2 rounded">\( P = \rho \cdot g \cdot h \)</span></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-green-100 text-green-800 step-badge">5. التعويض</span>
+                                <div class="text-gray-700 math-block bg-gray-50 p-3 rounded w-full mt-2">
+                                    \[ P = 1000 \times 10 \times 8 \]
+                                    \[ P = 80,000 \, Pa \]
+                                    <span class="text-sm text-green-700 font-bold" dir="rtl">(لا ننسى الوحدة Pa لأننا حسبنا ضغطاً)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Lesson 2 ==================== -->
+        <section id="lesson2" class="lesson-card bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-gray-100">
+            <div class="flex items-center gap-4 mb-8 border-b-2 border-green-100 pb-4">
+                <div class="bg-green-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center text-3xl font-black shadow-md">2</div>
+                <h2 class="text-3xl md:text-4xl font-black text-green-900">الدرس الثاني: الطفو (Buoyancy)</h2>
+            </div>
+
+            <div class="space-y-10">
+                <!-- شرح -->
+                <div>
+                    <h3 class="text-2xl font-bold text-green-700 mb-4">📖 القوانين الأساسية والمفاهيم</h3>
+                    <p class="mb-4 text-gray-700">الطفو هو القوة التي تدفعك للأعلى عندما تسبح في الماء. قوة الطفو تعتمد على <strong>حجم الجسم</strong> و <strong>كثافة السائل</strong>.</p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-4">
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">1. قوة الطفو (قاعدة أرخميدس):</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm">\[ F_B = \rho_f \cdot V_f \cdot g \]</div>
+                            <p class="text-sm mt-2 text-gray-600">نستخدمه لحساب قوة الرفع. \(V_f\) هو الحجم المغمور، و \(\rho_f\) كثافة السائل.</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">2. الوزن الظاهري:</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm">\[ W' = W_{true} - F_B \]</div>
+                            <p class="text-sm mt-2 text-gray-600">الجسم في الماء يبدو أخف! الوزن الظاهري = الوزن الحقيقي ناقص قوة الطفو.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 text-center">
+                        <h4 class="font-bold text-yellow-800 mb-2">متى يطفو ومتى يغوص؟ (قاعدة الكثافة)</h4>
+                        <p class="text-sm text-gray-700">إذا كانت كثافة الجسم <strong>أكبر</strong> من السائل ⬅️ يغوص (مثل الحجر).<br>إذا كانت كثافة الجسم <strong>أقل</strong> من السائل ⬅️ يطفو (مثل الفلين).</p>
+                    </div>
+                </div>
+
+                <!-- مثال محلول خطوة بخطوة -->
+                <div class="bg-green-50 p-6 rounded-2xl border-r-[5px] border-green-500 shadow-sm">
+                    <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                        <span class="text-2xl">📝</span> تطبيق طريقة الحل من الصفر
+                    </h3>
+                    
+                    <div class="bg-white p-5 rounded-xl shadow-md border border-green-100">
+                        <p class="mb-4 text-lg font-bold">السؤال: قطعة معدنية حجمها \( 0.002 \, m^3 \) غُمرت كلياً في الماء. احسب قوة الطفو المؤثرة فيها. (\(\rho_{water} = 1000 \, kg/m^3\), \(g = 10 \, m/s^2\))</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-red-100 text-red-800 step-badge">1. المعطيات</span>
+                                <div class="text-gray-700">الحجم \( V = 0.002 \). الكثافة \( \rho = 1000 \). الجاذبية \( g = 10 \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-orange-100 text-orange-800 step-badge">2. المطلوب</span>
+                                <div class="text-gray-700">يقول "احسب قوة الطفو"، إذن المطلوب \( F_B = ? \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-yellow-100 text-yellow-800 step-badge">3. التحويل</span>
+                                <div class="text-gray-700">الحجم بـ \(m^3\). لا يوجد تحويل، كل شيء ممتاز.</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-blue-100 text-blue-800 step-badge">4. القانون</span>
+                                <div class="text-gray-700">قانون قوة الطفو هو: <span class="math-block inline-block bg-gray-100 px-2 rounded">\[ F_B = \rho \cdot V \cdot g \]</span></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-green-100 text-green-800 step-badge">5. التعويض</span>
+                                <div class="text-gray-700 math-block bg-gray-50 p-3 rounded w-full mt-2">
+                                    \[ F_B = 1000 \times 0.002 \times 10 \]
+                                    \[ F_B = 20 \, N \]
+                                    <span class="text-sm text-green-700 font-bold" dir="rtl">(الوحدة نيوتن \(N\) لأن قوة الطفو هي عبارة عن "قوة")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Lesson 3 ==================== -->
+        <section id="lesson3" class="lesson-card bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-gray-100">
+            <div class="flex items-center gap-4 mb-8 border-b-2 border-purple-100 pb-4">
+                <div class="bg-purple-600 text-white w-14 h-14 rounded-2xl flex items-center justify-center text-3xl font-black shadow-md">3</div>
+                <h2 class="text-3xl md:text-4xl font-black text-purple-900">الدرس الثالث: الموائع المتحركة</h2>
+            </div>
+
+            <div class="space-y-10">
+                <!-- شرح -->
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-700 mb-4">📖 القوانين الأساسية</h3>
+                    <p class="mb-4 text-gray-700">هنا ندرس الماء عندما يتحرك في الأنابيب (مثل الخرطوم). القاعدة بسيطة: إذا ضاقت الفتحة، زادت السرعة!</p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-4">
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">1. معادلة الاستمرارية (المساحة والسرعة):</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm">\[ A_1 \cdot V_1 = A_2 \cdot V_2 \]</div>
+                            <p class="text-sm mt-2 text-gray-600">نستخدمها عندما يعطينا مساحة وسرعة لخرطوم واسع (\(A_1, V_1\)) ويطلب السرعة في الجزء الضيق (\(A_2, V_2\)).</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-800 mb-2">2. مبدأ برنولي:</h4>
+                            <div class="math-block bg-white p-3 rounded shadow-sm flex justify-center text-2xl items-center h-12">
+                                \( P \propto \frac{1}{V} \)
+                            </div>
+                            <p class="text-sm mt-2 text-gray-600">قاعدة ذهبية: <strong>(السرعة العالية = ضغط منخفض)</strong>. هذا المبدأ هو سبب طيران الطائرات وتطاير أسقف المنازل في العواصف.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مثال محلول خطوة بخطوة -->
+                <div class="bg-purple-50 p-6 rounded-2xl border-r-[5px] border-purple-500 shadow-sm">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4 flex items-center gap-2">
+                        <span class="text-2xl">📝</span> تطبيق طريقة الحل من الصفر
+                    </h3>
+                    
+                    <div class="bg-white p-5 rounded-xl shadow-md border border-purple-100">
+                        <p class="mb-4 text-lg font-bold">السؤال: أنبوب ماء مساحة مقطعه الأول \( 0.04 \, m^2 \) يتدفق فيه الماء بسرعة \( 2 \, m/s \). يضيق الأنبوب لتصبح مساحة مقطعه الثاني \( 0.01 \, m^2 \). احسب سرعة الماء في الجزء الضيق.</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-red-100 text-red-800 step-badge">1. المعطيات</span>
+                                <div class="text-gray-700">الجزء الأول: مساحة \( A_1 = 0.04 \)، سرعة \( V_1 = 2 \). <br> الجزء الثاني: مساحة \( A_2 = 0.01 \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-orange-100 text-orange-800 step-badge">2. المطلوب</span>
+                                <div class="text-gray-700">سرعة الماء في الجزء الثاني \( V_2 = ? \).</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-yellow-100 text-yellow-800 step-badge">3. التحويل</span>
+                                <div class="text-gray-700">المساحات بـ \(m^2\) والسرعة \(m/s\). لا نحتاج تحويلات.</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-blue-100 text-blue-800 step-badge">4. القانون</span>
+                                <div class="text-gray-700">القانون الذي يجمع \(A\) و \(V\) هو: <span class="math-block inline-block bg-gray-100 px-2 rounded">\[ A_1 \cdot V_1 = A_2 \cdot V_2 \]</span></div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="bg-green-100 text-green-800 step-badge">5. التعويض</span>
+                                <div class="text-gray-700 math-block bg-gray-50 p-3 rounded w-full mt-2">
+                                    \[ 0.04 \times 2 = 0.01 \times V_2 \]
+                                    \[ 0.08 = 0.01 \times V_2 \]
+                                    <p dir="rtl" class="text-sm text-gray-500 mb-1">(لإيجاد \(V_2\) نقسم الطرفين على 0.01)</p>
+                                    \[ V_2 = \frac{0.08}{0.01} = 8 \, m/s \]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 text-center border-t-8 border-yellow-400 mt-16">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
+            <div class="bg-slate-800 p-8 rounded-3xl shadow-inner mb-6 w-full max-w-lg border border-slate-700">
+                <p class="font-black text-2xl mb-2 text-white">تلخيص وشرح وتبسيط الفيزياء</p>
+                <p class="text-lg text-slate-400">الصف التاسع - الفصل الثاني</p>
+                <div class="mt-4 mb-2">
+                    <span class="text-sm">إعداد وتصميم وبرمجة:</span>
+                </div>
+                <p class="text-yellow-400 font-black text-4xl tracking-wide inline-block drop-shadow-lg">قيس جازي</p>
+            </div>
+            <p class="text-sm opacity-60">الوحدة الرابعة: ميكانيكا الموائع - المنهاج الأردني</p>
+            <p class="text-xs mt-2 opacity-40">صُنع خصيصاً لمساعدة الطلاب على التفهم والحل من الصفر بقواعد مبسطة.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
